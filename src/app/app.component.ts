@@ -14,6 +14,7 @@ import { CheckBoxPage } from '../pages/checkbox/checkbox';
 import { ModalPage } from '../pages/modal/modal';
 import { ListPage }  from '../pages/list/list'
 import { SegmentPage }  from '../pages/segment/segment'
+import { FileProcessPage }  from '../pages/file-process/file-process'
 
 @Component({
   templateUrl: 'app.html'
@@ -43,7 +44,8 @@ export class MyApp {
       { title: 'CheckBox', component: CheckBoxPage },
       { title: 'Model', component: ModalPage },
       { title: 'List' , component : ListPage},
-      { title : 'Segment', component : SegmentPage}
+      { title : 'Segment', component : SegmentPage},
+      { title : 'File Manupulation', component  : FileProcessPage}
     ];
 
     this.checkPageRedirection();

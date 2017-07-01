@@ -7,7 +7,13 @@ import { IonicStorageModule } from '@ionic/storage';
 // Native Plugins
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommonController } from '../providers/CommonController';
@@ -33,6 +39,7 @@ import { ListHttpRefreshPage }  from '../pages/list/list-http-refresh/list-http-
 import { ListItemDetailPage }  from '../pages/list/list-item-detail/list-item-detail'
 
 import { SegmentPage }  from '../pages/segment/segment'
+import { FileProcessPage }  from '../pages/file-process/file-process'
 
 @NgModule({
   declarations: [
@@ -51,7 +58,8 @@ import { SegmentPage }  from '../pages/segment/segment'
     ListHttpPage,
     ListHttpRefreshPage,
     ListItemDetailPage,
-    SegmentPage
+    SegmentPage,
+    FileProcessPage
   ],
   imports: [
     BrowserModule,
@@ -80,7 +88,8 @@ import { SegmentPage }  from '../pages/segment/segment'
     ListHttpPage,
     ListHttpRefreshPage,
     ListItemDetailPage,
-    SegmentPage
+    SegmentPage,
+    FileProcessPage
   ],
   providers: [
     StatusBar,
@@ -88,6 +97,13 @@ import { SegmentPage }  from '../pages/segment/segment'
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductListProvider,
     CommonController,
+    File,
+    FilePath,
+    Transfer,
+    PhotoViewer,
+    FileChooser,
+    AndroidPermissions,
+    DocumentViewer,
   ]
 })
 export class AppModule {}
