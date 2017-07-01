@@ -38,3 +38,4 @@ $ cordova plugin ls
 ```
 
 Substitute ios for android if not on a Mac.
+# Ionic2_tutorial
