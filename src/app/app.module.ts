@@ -30,7 +30,7 @@ import { ButtonPage } from '../pages/buttons/button';
 import { BasicButtonPage } from '../pages/buttons/basic-button/basic-button';
 import { IconsButtonPage } from '../pages/buttons/icons-button/icons-button';
 import { ButtonComponentsPage } from '../pages/buttons/button-components/button-components';
-import { ModalPage } from '../pages/modal/modal';
+import { ModalPage,ModalContentPage } from '../pages/modal/modal';
 
 import { ListPage }  from '../pages/list/list'
 import { StaticListPage }  from '../pages/list/static-list/list'
@@ -40,6 +40,8 @@ import { ListItemDetailPage }  from '../pages/list/list-item-detail/list-item-de
 
 import { SegmentPage }  from '../pages/segment/segment'
 import { FileProcessPage }  from '../pages/file-process/file-process'
+
+import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
 
 @NgModule({
   declarations: [
@@ -53,13 +55,16 @@ import { FileProcessPage }  from '../pages/file-process/file-process'
     ButtonComponentsPage,
     SlideBoxPage,
     ModalPage,
+    ModalContentPage,
     ListPage,
     StaticListPage,
     ListHttpPage,
     ListHttpRefreshPage,
     ListItemDetailPage,
     SegmentPage,
-    FileProcessPage
+    FileProcessPage,
+    PopoverPage,
+    PopoverContentPage,
   ],
   imports: [
     BrowserModule,
@@ -83,13 +88,16 @@ import { FileProcessPage }  from '../pages/file-process/file-process'
     ButtonComponentsPage,
     SlideBoxPage,
     ModalPage,
+    ModalContentPage,
     ListPage,
     StaticListPage,
     ListHttpPage,
     ListHttpRefreshPage,
     ListItemDetailPage,
     SegmentPage,
-    FileProcessPage
+    FileProcessPage,
+    PopoverPage,
+    PopoverContentPage,
   ],
   providers: [
     StatusBar,

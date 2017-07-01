@@ -15,6 +15,7 @@ import { ModalPage } from '../pages/modal/modal';
 import { ListPage }  from '../pages/list/list'
 import { SegmentPage }  from '../pages/segment/segment'
 import { FileProcessPage }  from '../pages/file-process/file-process'
+import { PopoverPage }  from '../pages/popover/popover'
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +46,8 @@ export class MyApp {
       { title: 'Model', component: ModalPage },
       { title: 'List' , component : ListPage},
       { title : 'Segment', component : SegmentPage},
-      { title : 'File Manupulation', component  : FileProcessPage}
+      { title : 'Popover', component  :PopoverPage},
+      { title : 'File Manupulation', component  : FileProcessPage},
     ];
 
     this.checkPageRedirection();
