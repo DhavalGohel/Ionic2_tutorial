@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from 'ionic-angular';
+import { LoadingController, ToastController ,Platform} from 'ionic-angular';
 
 @Injectable()
 export class CommonController {
@@ -15,7 +15,8 @@ export class CommonController {
   public toast;
 
   constructor(public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public platform: Platform) {
   }
 
   showLoading(message) {
@@ -63,5 +64,13 @@ export class CommonController {
 
   hideToast() {
     this.toast.dismiss();
+  }
+
+  isRunOnMobileDevice() {
+    return this.platform.is('mobile') ? true : false;
+  }
+
+  isRunOnAndroid() {
+    return this.platform.is('android') ? true : false;
   }
 }

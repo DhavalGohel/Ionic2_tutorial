@@ -16,6 +16,7 @@ import { ListPage }  from '../pages/list/list'
 import { SegmentPage }  from '../pages/segment/segment'
 import { FileProcessPage }  from '../pages/file-process/file-process'
 import { PopoverPage }  from '../pages/popover/popover'
+import { ImageManupulationPage } from '../pages/image-manupulation/image-manupulation';
 
 @Component({
   templateUrl: 'app.html'
@@ -48,6 +49,7 @@ export class MyApp {
       { title : 'Segment', component : SegmentPage},
       { title : 'Popover', component  :PopoverPage},
       { title : 'File Manupulation', component  : FileProcessPage},
+      { title : 'Image Manupulation', component  : ImageManupulationPage},
     ];
 
     this.checkPageRedirection();

@@ -14,10 +14,15 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { DocumentViewer } from '@ionic-native/document-viewer';
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommonController } from '../providers/CommonController';
 
+//Module
+
+import { ImageManupulationPageModule } from '../pages/image-manupulation/image-manupulation.module';
 
 // Components
 import { MyApp } from './app.component';
@@ -69,6 +74,7 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
   imports: [
     BrowserModule,
     HttpModule,
+    ImageManupulationPageModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp,{
       tabsHighlight: true,
@@ -112,6 +118,8 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
     FileChooser,
     AndroidPermissions,
     DocumentViewer,
+    Camera,
+    ImagePicker,
   ]
 })
 export class AppModule {}
