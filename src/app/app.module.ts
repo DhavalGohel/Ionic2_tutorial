@@ -23,6 +23,7 @@ import { CommonController } from '../providers/CommonController';
 //Module
 
 import { ImageManupulationPageModule } from '../pages/image-manupulation/image-manupulation.module';
+import { NestedtabPageModule } from '../pages/nestedtab/nestedtab.module'
 
 // Components
 import { MyApp } from './app.component';
@@ -75,6 +76,7 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
     BrowserModule,
     HttpModule,
     ImageManupulationPageModule,
+    NestedtabPageModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp,{
       tabsHighlight: true,

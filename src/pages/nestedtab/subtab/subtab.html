@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nested Tab</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-tabs>
+     <ion-tab [root]="subtab1Root" tabTitle="tab1" tabIcon="subtab1"></ion-tab>
+     <ion-tab [root]="subtab2Root" tabTitle="tab2" tabIcon="subtab2"></ion-tab>
+  </ion-tabs>
+  <!-- <ion-segment [(ngModel)]="pet">
+   <ion-segment-button value="kittens">
+     Kittens
+   </ion-segment-button>
+   <ion-segment-button value="puppies">
+     Puppies
+   </ion-segment-button>
+ </ion-segment> -->
+</ion-content>

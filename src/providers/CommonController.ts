@@ -8,7 +8,7 @@ export class CommonController {
   // public API_PRODUCT_URL = "https://www.addtobuy.com/api/";
   public API_PRODUCT_URL = "http://a2b.172.104.57.92.nip.io/api/";
 
-  public API_URL_UPLOADS = "http://192.168.1.97:8400";
+  public API_URL_UPLOADS = "http://192.168.1.67:8400";
   // public API_URL_UPLOADS = "http://a2b.172.104.57.92.nip.io/api/updateprofile";
 
   public loader;

@@ -47,6 +47,22 @@ export class ProductListProvider {
     });
   }
 
+  postMethodUpload(param?: any, options?: RequestOptions) {
+    if (!options) {
+      options = new RequestOptions();
+    }
+
+    return new Promise(resolve => {
+      this.http.post(this.commonCtrl.API_URL_UPLOADS, param, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, (err) => {
+          resolve(err.json());
+        });
+    });
+  }
+
   loadProductData(page: number) {
     return new Promise(resolve => {
       this.http.get(this.commonCtrl.API_PRODUCT_URL + "products/womens-apparel/womens-apparel-topwear/tops-tunics?page=" + page)

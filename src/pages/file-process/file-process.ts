@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform} from 'ionic-angular';
 
 import { CommonController } from '../../providers/CommonController';
+import { ProductListProvider } from '../../providers/product-list/product-list';
 
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
@@ -38,24 +39,21 @@ export class FileProcessPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public platform: Platform,
-    public commonController: CommonController,
+    public commonCtrl: CommonController,
     public androidPermissions: AndroidPermissions,
     public fileChooser: FileChooser,
     public file: File,
     public filePath: FilePath,
     public transfer: Transfer,
-    public document: DocumentViewer) {
-  }
-
-  isRunOnMobileDevice() {
-    return this.platform.is('mobile') ? true : false;
+    public document: DocumentViewer,
+    public productListProvider: ProductListProvider) {
   }
 
   openImageSelector() {
-    if (this.isRunOnMobileDevice()) {
+    if (this.commonCtrl.isRunOnMobileDevice()) {
       this.requestFileReadPermission();
     } else {
-      this.commonController.showToast("Camera plugin does not work in browser.", "bottom", 3000, true, "Ok", true);
+      this.commonCtrl.showToast("Camera plugin does not work in browser.", "bottom", 3000, true, "Ok", true);
     }
   }
 
@@ -68,7 +66,7 @@ export class FileProcessPage {
       }, error => {
         console.log(error);
 
-        this.commonController.showToast(error, "bottom", 3000, true, "Ok", true);
+        this.commonCtrl.showToast(error, "bottom", 3000, true, "Ok", true);
       });
   }
 
@@ -79,7 +77,7 @@ export class FileProcessPage {
       }, error => {
         console.log(error);
 
-        this.commonController.showToast(error, "bottom", 3000, true, "Ok", true);
+        this.commonCtrl.showToast(error, "bottom", 3000, true, "Ok", true);
       });
   }
 
@@ -101,6 +99,7 @@ export class FileProcessPage {
   getFiles(element) {
     console.log(element.target.files);
     console.log(element.target.files[0]);
+    this.uploadFileSimple(element.target.files[0]);
   }
 
   openFileChosser() {
@@ -119,7 +118,7 @@ export class FileProcessPage {
     }).catch(error => {
       console.log(error);
 
-      this.commonController.showToast(error, "bottom", 3000, true, "Ok", true);
+      this.commonCtrl.showToast(error, "bottom", 3000, true, "Ok", true);
     });
   }
 
@@ -144,12 +143,27 @@ export class FileProcessPage {
         this.openPdfFile();
       }
     }, error => {
-      this.commonController.showToast('Error while storing file.', "bottom", 3000, true, "Ok", true);
+      this.commonCtrl.showToast('Error while storing file.', "bottom", 3000, true, "Ok", true);
     });
   }
 
+  uploadFileSimple(filename) {
+    console.log(filename);
+    //let UPLOAD_URL = this.commonCtrl.API_URL_UPLOADS;
+    //var b = new Blob([filename], {type: "image/*;charset=utf-8"});
+    var fd = new FormData();
+    fd.append('file1', filename);
+
+    this.productListProvider.postMethodUpload(fd).then(success => {
+      console.log("success" + success);
+    }, err => {
+      console.log("success" + err);
+    }).catch(e => {
+      console.log("success" + e);
+    })
+  }
   uploadFile() {
-    let UPLOAD_URL = this.commonController.API_URL_UPLOADS;
+    let UPLOAD_URL = this.commonCtrl.API_URL_UPLOADS;
 
     let uploadParams = {};
 
@@ -161,30 +175,30 @@ export class FileProcessPage {
       params: uploadParams
     };
 
-    this.commonController.showLoading('Uploading...');
+    this.commonCtrl.showLoading('Uploading...');
 
     // Use the FileTransfer to upload the image
     this.fileTransfer.upload(this.mSelectFilePath, UPLOAD_URL, uploadOptions).then(data => {
-      this.commonController.hideLoading();
+      this.commonCtrl.hideLoading();
 
       if (data != null) {
         console.log(data);
 
         let resp = JSON.parse(data.response);
-        this.commonController.showToast(resp.message, "bottom", 3000, true, "Ok", true);
+        this.commonCtrl.showToast(resp.message, "bottom", 3000, true, "Ok", true);
       }
     }, err => {
       console.log(err);
 
-      this.commonController.hideLoading();
-      this.commonController.showToast('Error while uploading file.', "bottom", 3000, true, "Ok", true);
+      this.commonCtrl.hideLoading();
+      this.commonCtrl.showToast('Error while uploading file.', "bottom", 3000, true, "Ok", true);
     });
 
-    this.fileTransfer.onProgress(progressEvent =>{
+    this.fileTransfer.onProgress(progressEvent => {
       // console.log(progressEvent);
 
       if (progressEvent.lengthComputable) {
-        this.commonController.showLoading(Math.floor(progressEvent.loaded / progressEvent.total * 100) + '% Uploading...');
+        this.commonCtrl.showLoading(Math.floor(progressEvent.loaded / progressEvent.total * 100) + '% Uploading...');
         console.log("Progress : " + Math.floor(progressEvent.loaded / progressEvent.total * 100));
       }
     });
