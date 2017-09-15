@@ -16,6 +16,9 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Network } from '@ionic-native/network';
+import { Toast } from '@ionic-native/toast';
+
 
 import { ProductListProvider } from '../providers/product-list/product-list';
 import { CommonController } from '../providers/CommonController';
@@ -47,6 +50,8 @@ import { ListItemDetailPage }  from '../pages/list/list-item-detail/list-item-de
 import { SegmentPage }  from '../pages/segment/segment'
 import { FileProcessPage }  from '../pages/file-process/file-process'
 
+import { HorizontalsVerticalBlock } from '../pages/horizontals-vertical-block/horizontals-vertical-block'
+
 import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
 
 @NgModule({
@@ -71,6 +76,7 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
     FileProcessPage,
     PopoverPage,
     PopoverContentPage,
+    HorizontalsVerticalBlock,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +112,7 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
     FileProcessPage,
     PopoverPage,
     PopoverContentPage,
+    HorizontalsVerticalBlock
   ],
   providers: [
     StatusBar,
@@ -122,6 +129,8 @@ import { PopoverPage,PopoverContentPage }  from '../pages/popover/popover'
     DocumentViewer,
     Camera,
     ImagePicker,
+    Network,
+    Toast
   ]
 })
 export class AppModule {}

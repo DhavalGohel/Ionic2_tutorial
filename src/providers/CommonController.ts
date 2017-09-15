@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController ,Platform} from 'ionic-angular';
+import { LoadingController, ToastController ,Platform,AlertController} from 'ionic-angular';
+import { Network } from '@ionic-native/network';
+import { Toast } from '@ionic-native/toast';
+
 
 @Injectable()
 export class CommonController {
@@ -16,7 +19,22 @@ export class CommonController {
 
   constructor(public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public platform: Platform) {
+    public platform: Platform,
+    public network: Network,
+    private nativeToastCtrl: Toast,
+    public alertCtrl: AlertController) {
+  }
+
+  hasConnection() {
+    if (this.isRunOnMobileDevice()) {
+      if (this.network.type == "unknown" || this.network.type == null || this.network.type == "none") {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return true;
+    }
   }
 
   showLoading(message) {
@@ -65,6 +83,29 @@ export class CommonController {
   hideToast() {
     this.toast.dismiss();
   }
+
+  showAlertMsg(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: ['Ok']
+    });
+
+    alert.present();
+  }
+
+  showNativeToast(msg, position, duration) {
+    if (this.isRunOnMobileDevice()) {
+      this.toast.show(msg, duration, position).subscribe(
+        toast => {
+          console.log(toast);
+        });
+    } else {
+      this.showToast(msg, position, duration, true, "ok", true);
+    }
+  }
+
+
 
   isRunOnMobileDevice() {
     return this.platform.is('mobile') ? true : false;

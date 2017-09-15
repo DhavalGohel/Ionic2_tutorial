@@ -18,6 +18,7 @@ import { FileProcessPage }  from '../pages/file-process/file-process'
 import { PopoverPage }  from '../pages/popover/popover'
 import { ImageManupulationPage } from '../pages/image-manupulation/image-manupulation';
 import { NestedtabPage } from '../pages/nestedtab/nestedtab';
+import { HorizontalsVerticalBlock } from '../pages/horizontals-vertical-block/horizontals-vertical-block';
 
 @Component({
   templateUrl: 'app.html'
@@ -51,7 +52,8 @@ export class MyApp {
       { title : 'Popover', component  :PopoverPage},
       { title : 'File Manupulation', component  : FileProcessPage},
       { title : 'Image Manupulation', component  : ImageManupulationPage},
-      { title : 'Nested Tab', component : NestedtabPage}
+      { title : 'Nested Tab', component : NestedtabPage},
+      { title : 'Horizantal Vertical', component : HorizontalsVerticalBlock}
     ];
 
     this.checkPageRedirection();

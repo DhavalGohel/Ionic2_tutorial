@@ -76,4 +76,39 @@ export class ProductListProvider {
     });
   }
 
+  // For Get Client  Listing
+  getHomeData(search_text?: string, page?: number, options?: RequestOptions) {
+    let api_url = "https://www.addtobuy.com/api/home?";
+
+    if (search_text != null && search_text != "") {
+      api_url = api_url + "&search=" + search_text.trim();
+    }
+
+    if (page != null) {
+      api_url = api_url + "&page=" + page;
+    }
+
+    if (!options) {
+      options = new RequestOptions();
+    }
+
+    return new Promise((resolve, reject) => {
+      this.http.get(api_url, options)
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, (err) => {
+          try {
+            resolve(err.json());
+          } catch (e) {
+            try {
+              resolve(err.json());
+            } catch (e) {
+              reject(err);
+            }
+          }
+        });
+    });
+  }
+
 }
